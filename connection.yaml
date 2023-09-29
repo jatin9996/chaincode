@@ -1,0 +1,46 @@
+name: "orgrelmemspprofile"
+version: "1.0"
+
+channels:
+  mychannel:
+    orderers:
+      - orderer.com
+    peers:
+      peer1:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+
+organizations:
+  Org1:
+    mspid: m-J2KICKCIRBG7TJMUXQIFLF5YGA
+    peers:
+      - peer1
+    certificateAuthorities:
+      - ca-org1
+
+orderers:
+  orderer.com:
+    url: grpcs://orderer.n-c27tpvyhwfhtbabodq3axisdtq.managedblockchain.us-east-1.amazonaws.com:30001
+    grpcOptions:
+      ssl-target-name-override: orderer.n-c27tpvyhwfhtbabodq3axisdtq.managedblockchain.us-east-1.amazonaws.com
+    tlsCACerts:
+      path: /home/ec2-user/managedblockchain-tls-chain.pem
+
+peers:
+  peer1:
+    url: grpcs://nd-ydqhhuoljfaejbrb3cpfkpf3dq.m-j2kickcirbg7tjmuxqiflf5yga.n-c27tpvyhwfhtbabodq3axisdtq.managedblockchain.us-east-1.amazonaws.com:30003
+    grpcOptions:
+      ssl-target-name-override: nd-ydqhhuoljfaejbrb3cpfkpf3dq.m-j2kickcirbg7tjmuxqiflf5yga.n-c27tpvyhwfhtbabodq3axisdtq.managedblockchain.us-east-1.amazonaws.com
+    tlsCACerts:
+      path: /home/ec2-user/managedblockchain-tls-chain.pem
+
+certificateAuthorities:
+  ca-org1:
+    url: https://ca.m-j2kickcirbg7tjmuxqiflf5yga.n-c27tpvyhwfhtbabodq3axisdtq.managedblockchain.us-east-1.amazonaws.com:30002
+    httpOptions:
+      verify: false
+    tlsCACerts:
+      path: /home/ec2-user/managedblockchain-tls-chain.pem
+    caName: m-J2KICKCIRBG7TJMUXQIFLF5YGA

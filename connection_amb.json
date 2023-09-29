@@ -1,0 +1,61 @@
+{
+    "name": "orgrelmemspprofile",
+    "description": "Network on AMB",
+    "version": "1.0.0",
+    "channels": {
+        "mychannel": {
+            "orderers": "HLFNetwork",
+            "peers" : {
+                "nd-YDQHHUOLJFAEJBRB3CPFKPF3DQ": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "ledgerQuery": true,
+                    "eventSource": true
+                }
+            }
+        }
+
+    },
+    "organizations": {
+        "Org1": {
+            "mspid": "m-J2KICKCIRBG7TJMUXQIFLF5YGA",
+            "peers": "nd-YDQHHUOLJFAEJBRB3CPFKPF3DQ",
+            "certificateAuthorities": "ca-org1"
+        }
+    },
+    "orderers": {
+        "HLFNetwork": {
+            "url": "grpcs://orderer.n-c27tpvyhwfhtbabodq3axisdtq.managedblockchain.us-east-1.amazonaws.com:30001",
+            "tlsCACerts": {
+                "path": "/home/ec2-user/managedblockchain-tls-chain.pem"
+            }
+        }
+    },
+    "peers": {
+        "nd-YDQHHUOLJFAEJBRB3CPFKPF3DQ": {
+            "url": "grpcs://nd-ydqhhuoljfaejbrb3cpfkpf3dq.m-j2kickcirbg7tjmuxqiflf5yga.n-c27tpvyhwfhtbabodq3axisdtq.managedblockchain.us-east-1.amazonaws.com:30003",
+            "grpcOptions": {
+                "ssl-target-name-override": "nd-ydqhhuoljfaejbrb3cpfkpf3dq.m-j2kickcirbg7tjmuxqiflf5yga.n-c27tpvyhwfhtbabodq3axisdtq.managedblockchain.us-east-1.amazonaws.com"
+            },
+            "tlsCACerts": {
+                "path": "/home/ec2-user/managedblockchain-tls-chain.pem"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "ca-org1": {
+            "url": "https://ca.m-j2kickcirbg7tjmuxqiflf5yga.n-c27tpvyhwfhtbabodq3axisdtq.managedblockchain.us-east-1.amazonaws.com:30002",
+            "httpOptions": {
+                "verify": "false"
+            },
+            "registrar": {
+                "enrollId": "admin",
+                "enrollSecret": "adminPw5822"
+            },
+            "caName":"m-J2KICKCIRBG7TJMUXQIFLF5YGA",
+            "tlsCACerts": {
+                "path": "/home/ec2-user/managedblockchain-tls-chain.pem"
+            }
+        }
+    }
+}
